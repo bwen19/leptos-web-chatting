@@ -1,0 +1,7 @@
+.vscode/
+target/
+node_modules/
+/db/chat_dev.*
+.env
+
+**/*.rs.bk

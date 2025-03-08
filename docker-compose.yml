@@ -1,0 +1,25 @@
+# version: "3.9"
+services:
+  redis:
+    image: redis:7.2.5-alpine3.20
+    command: /bin/sh -c "redis-server --requirepass ${REDIS_PASSWORD:-qYcGiZv2}"
+    volumes:
+      - rds_data:/data
+
+  server:
+    image: bwen19/chat
+    ports:
+      - "8080:8080"
+    environment:
+      - CHAT_DATABASE_URL=sqlite://db/chat.db
+      - CHAT_REDIS_URL=redis://:${REDIS_PASSWORD:-qYcGiZv2}@redis:6379/1
+    volumes:
+      - db_data:/app/db
+      - srv_assets:/app/site/assets
+    depends_on:
+      - redis
+
+volumes:
+  rds_data:
+  db_data:
+  srv_assets:

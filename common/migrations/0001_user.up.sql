@@ -1,0 +1,12 @@
+CREATE TABLE IF NOT EXISTS users (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  username TEXT NOT NULL,
+  password TEXT NOT NULL,
+  nickname TEXT NOT NULL,
+  avatar TEXT NOT NULL,
+  role INTEGER NOT NULL,
+  active BOOLEAN NOT NULL DEFAULT 1
+);
+
+CREATE UNIQUE INDEX idx_username
+ON users (username);

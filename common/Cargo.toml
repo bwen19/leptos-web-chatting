@@ -1,0 +1,51 @@
+[package]
+name = "common"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+serde.workspace = true
+serde_json.workspace = true
+uuid.workspace = true
+cfg-if.workspace = true
+thiserror.workspace = true
+
+leptos.workspace = true
+web-sys = { workspace = true, optional = true }
+wasm-bindgen = { workspace = true, optional = true }
+
+tokio = { workspace = true, optional = true }
+tokio-util = { workspace = true, optional = true }
+axum = { workspace = true, optional = true }
+axum-extra = { workspace = true, optional = true }
+leptos_axum = { workspace = true, optional = true }
+multer = { workspace = true, optional = true }
+futures-util = { workspace = true, optional = true }
+sqlx = { workspace = true, optional = true }
+redis = { workspace = true, optional = true }
+rand = { workspace = true, optional = true }
+validator = { workspace = true, optional = true }
+rust-argon2 = { workspace = true, optional = true }
+log = { workspace = true, optional = true }
+qrcode = { workspace = true, optional = true }
+image = { workspace = true, optional = true }
+
+[features]
+hydrate = ["dep:wasm-bindgen", "dep:web-sys"]
+ssr = [
+  "dep:tokio",
+  "dep:tokio-util",
+  "dep:axum",
+  "dep:axum-extra",
+  "dep:leptos_axum",
+  "dep:multer",
+  "dep:futures-util",
+  "dep:sqlx",
+  "dep:redis",
+  "dep:rand",
+  "dep:validator",
+  "dep:rust-argon2",
+  "dep:log",
+  "dep:qrcode",
+  "dep:image",
+]
